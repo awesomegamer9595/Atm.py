@@ -1,16 +1,17 @@
 import random
 
 class ATM:
-    def _init_(self,card_number,pin,money):
+    def __init__(self,card_number,pin,money):
         self.card_number = card_number
         self.pin=pin
         self.money=money
 
-    def withdrawal(self):
+    def withdrawal(self,money):
        withdrawal_amount= int(input("how much do you want withrawed?"))  
        if money > withdrawal_amount: 
         money = money-withdrawal_amount
         print("Money Withdrawed")
+        print(money)
         
        else:
         print("insufficient money in bank,try again")
@@ -20,14 +21,14 @@ class ATM:
 def main():
     card_number=input("enter your card number ")
     pin =input("enter your pin")
-    money=input("how much do you have in your account?")
+    money=int(input("how much do you have in your account?"))
     new_user = ATM(card_number,pin,money)
     
     print("choose your activity")
     print("1-withdraw money  2-balance enquiry")
     activity= int(input("enter the number"))
     if(activity ==1):
-      new_user.withdrawal()
+      new_user.withdrawal(money)
 
     elif(activity==2):
         print(money)
